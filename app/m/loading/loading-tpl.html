@@ -1,0 +1,146 @@
+<h3>Loading</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: loading config
+$.fn.loading(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Page Loading</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    // loading
+    var loading = $("body").loading({
+        overlay: {
+            css: {
+                "z-index": 100
+            }
+        }
+    });
+
+    // async close
+    setTimeout(function () {
+        loading.stop();
+    }, 2000);
+    
+    ...
+});
+                </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Embed in element</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+$("#picker").loading({
+    overlay: {
+        css: {
+            "background-color": "rgb(255, 255, 255, 70%)",
+            "border-radius": "8px"
+        }
+    },
+    spinner: {
+        class: "warning"
+    }
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>overlay</td>
+                            <td>JSON</td>
+                            <td>for detail see below</td>
+                        </tr>
+                        <tr>
+                            <td>spinner</td>
+                            <td>JSON</td>
+                            <td>for detail see below</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="card-title mt-4">overlay</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>css</td>
+                            <td>{"z-index": 4}</td>
+                            <td>overlay css</td>
+                        </tr>
+                        <tr>
+                            <td>disabled</td>
+                            <td>false / true</td>
+                            <td>if disable overlay, default is false</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="card-title mt-4">spinner</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>primary, warning, danger</td>
+                            <td>spinner style class, default is primary</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

@@ -1,0 +1,51 @@
+<h3>Share</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+$.fn.share()</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    $("#to-share").on("click", function () {
+        $("#share-bottom").offcanvas("toggle");
+    });
+    $("#share").share({
+        onSelect: function (index) {
+            console.log(index);
+        }
+    });
+    
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

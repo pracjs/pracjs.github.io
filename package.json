@@ -1,0 +1,24 @@
+{
+  "name": "prac-web-ui",
+  "version": "1.0.0",
+  "description": "prac web ui",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/nuggets1/prac-web-ui.git"
+  },
+  "author": "Nuggets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/nuggets1/prac-web-ui/issues"
+  },
+  "homepage": "https://gitlab.com/nuggets1/prac-web-ui#readme",
+  "devDependencies": {
+    "codemirror": "^5.65.0",
+    "express": "^4.17.2",
+    "multer": "^1.4.4"
+  }
+}

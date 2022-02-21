@@ -1,0 +1,55 @@
+<h3>Image Preview</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// data: image data
+$.imagePreview(data)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    $("#preview").on("click", function () {
+        var p = $.imagePreview([{
+            path: "/res/image/1.jpeg"
+        }, {
+            path: "/res/image/2.jpeg"
+        }, {
+            path: "/res/image/3.jpeg"
+        }, {
+            path: "/res/image/4.jpeg"
+        }]);
+
+        p.select(1);
+    });
+    
+    ...
+});
+                </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

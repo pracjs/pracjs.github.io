@@ -1,0 +1,214 @@
+<h3>Uploader</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: uploader config
+$.fn.uploader(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <div>Click following icon to upload your files, and support to preivew the images upload.</div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    function _init() {
+        $("#upload").uploader();
+    }
+
+    ...
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Your Uploader</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-config-js">
+var myUploader = $("#upload-options").uploader({
+    url: "/upload",
+    width: "10rem",
+    limit: 3,
+    accept: "image/*",
+    validation: {
+        size: function (size, index) {
+            // file size cannot be bigger than 100K
+            if (size > 100 * 1024) {
+                $.toast("image size cannot be larger than 100K", {
+                    class: "danger",
+                    timeout: 3000
+                });
+                return false;
+            }
+            return true;
+        },
+        type: function (type) {
+            // must be image
+            if (type.name != "image") {
+                return false;
+            }
+            return true;
+        }
+    },
+    onProgress: function (loaded, total) {
+        // upload progress
+        console.log(loaded / total);
+    },
+    onSuccess: function (result, textStatus, xhr) {
+        // You can do some process using result
+        console.log(result);
+
+        // must return this
+        return {
+            name: result.name,
+            path: result.path
+        };
+    },
+    onError: function (xhr, textStatus, errorThrown) {
+        // Do your process
+    },
+    onComplete: function (index) {
+        // Do your process
+        console.log("complete index = ", index);
+        console.log(myUploader.files());
+    },
+    onRemove: function (file, index) {
+        // Do your process
+        console.log("remove index = ", index);
+        console.log("remove file = ", file);
+        console.log(myUploader.files());
+    }
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-config-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Uploader Options</h4>
+                <h5 class="mt-4">options</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>url</td>
+                            <td>/upload</td>
+                            <td>upload url, default is '/upload'</td>
+                        </tr>
+                        <tr>
+                            <td>fieldName</td>
+                            <td>file</td>
+                            <td>file input name, default is 'file'</td>
+                        </tr>
+                        <tr>
+                            <td>limit</td>
+                            <td>0</td>
+                            <td>maximum number of uploaded files, default is 0, no limit</td>
+                        </tr>
+                        <tr>
+                            <td>progress</td>
+                            <td>percent, text</td>
+                            <td>displaying for upload progress, default is 'percent'.<br/>If set to 'text', will display the content setting in 'text.uploading'</td>
+                        </tr>
+                        <tr>
+                            <td>text</td>
+                            <td>{ uploading: "uploading...", failed: "upload failed" }</td>
+                            <td>Set the displaying text for uploading and upload failed</td>
+                        </tr>
+                        <tr>
+                            <td>width</td>
+                            <td>6rem</td>
+                            <td>uploader size, default is 6rem</td>
+                        </tr>
+                        <tr>
+                            <td>accept</td>
+                            <td>*</td>
+                            <td>accept file type<br/>for example: image/*, video/*, text/html, .docx<br/>can set multiple, separated by ','</td>
+                        </tr>
+                        <tr>
+                            <td>validation</td>
+                            <td>
+                                <textarea id="code-validation">
+validation: {
+    size: function (size, index) {
+        // size: file size, unit is byte
+        // index: the index number of current file
+        return true;
+    },
+    type: function (type, index) {
+        // type: file type
+        // index: the index number of current file
+        return true
+    }
+}</textarea>
+                            </td>
+                            <td>validate for file size and type<br/>type is a JSON, for example: {"name": "image", "originalType": "image/png"}<br/>type.name: excel, word, ppt, pdf, image, video, audio, html, xml, txt, file</td>
+                        </tr>
+                        <tr>
+                            <td>onProgress</td>
+                            <td>function (loaded, total) { }</td>
+                            <td>callback on uploading in progress</td>
+                        </tr>
+                        <tr>
+                            <td>onSuccess</td>
+                            <td>function (result, textStatus, xhr) { }</td>
+                            <td>callback on upload success</td>
+                        </tr>
+                        <tr>
+                            <td>onError</td>
+                            <td>function (xhr, textStatus, errorThrown) { }</td>
+                            <td>callback on error happened</td>
+                        </tr>
+                        <tr>
+                            <td>onComplete</td>
+                            <td>function (index) { }</td>
+                            <td>callback on upload complete</td>
+                        </tr>
+                        <tr>
+                            <td>onRemove</td>
+                            <td>function (index) { }</td>
+                            <td>callback on remove a file</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prac</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="icon" href="/res/favicon.svg">
+    <link href="/style/css/bootstrap.css" rel="stylesheet">
+    <link href="/style/icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/style/css/prac.css" rel="stylesheet">
+    <link href="/style/css/codemirror.css" rel="stylesheet">
+    <link href="/style/css/style.css" rel="stylesheet">
+    <script src="/js/prac.js"></script>
+    <script src="/main.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-x-diamond-fill text-danger"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/" p-router>Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="side-menu" p-menu>
+        <div class="fold-btn">
+            <i class="bi bi-chevron-right"></i>
+            <i class="bi bi-chevron-left"></i>
+        </div>
+        <div class="header">
+            <h4>PracJS</h4>
+            <div>Easy, Powerful UI Framework</div>
+        </div>
+        <ul class="menu">
+            <li>
+                <a href="/" p-router>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="/quick-start" p-router>
+                    <span>Quick Start</span>
+                </a>
+            </li>
+            <li>
+                <a href="/router" p-router>
+                    <span>Router</span>
+                </a>
+            </li>
+            <li>
+                <a href="/module" p-router>
+                    <span>Module & Template</span>
+                </a>
+            </li>
+            <li>
+                <a href="/interceptor" p-router>
+                    <span>Interceptor</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span>Components</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/component/form" p-router>
+                            <span>Form</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/multiselect" p-router>
+                            <span>Multi Select</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/cascselect" p-router>
+                            <span>Cascade Select</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/slider" p-router>
+                            <span>Slider</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/stepper" p-router>
+                            <span>Stepper</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/dialog" p-router>
+                            <span>Dialog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/pagination/10/10" p-router>
+                            <span>Pagination</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/datepicker" p-router>
+                            <span>Datepicker</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/component/uploader" p-router>
+                            <span>Uploader</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span>Mobile</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/m/get-started" p-router>
+                            <span>Get Started</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>Form</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/m/form/picker" p-router>
+                                    <span>Picker</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/datepicker" p-router>
+                                    <span>Date Picker</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/timepicker" p-router>
+                                    <span>Time Picker</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/calendar" p-router>
+                                    <span>Calendar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/slider" p-router>
+                                    <span>Slider</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/stepper" p-router>
+                                    <span>Stepper</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/rate" p-router>
+                                    <span>Rate</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/uploader" p-router>
+                                    <span>Uploader</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/form/validation" p-router>
+                                    <span>Form & Validation</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>Action</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/m/action/loading" p-router>
+                                    <span>Loading</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/pull-refresh" p-router>
+                                    <span>Pull Refresh</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/swipe-cell" p-router>
+                                    <span>Swipe Cell</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/dialog" p-router>
+                                    <span>Dialog</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/toast" p-router>
+                                    <span>Toast</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/load-list" p-router>
+                                    <span>Load List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/lazy-load" p-router>
+                                    <span>Lazy Load</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/slides" p-router>
+                                    <span>Slides</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/image-preview" p-router>
+                                    <span>Image Preview</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/dropdown" p-router>
+                                    <span>Dropdown</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/action/share" p-router>
+                                    <span>Share</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>Nav</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/m/nav/index-nav" p-router>
+                                    <span>Index Nav</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/nav/tab" p-router>
+                                    <span>Tab</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/nav/tab-bar" p-router>
+                                    <span>Tab Bar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/nav/collapse" p-router>
+                                    <span>Collapse</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/nav/pagination" p-router>
+                                    <span>Pagination</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/nav/top-menu" p-router>
+                                    <span>Top Menu</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/nav/side-bar" p-router>
+                                    <span>Side Bar</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>Display</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/m/display/steps" p-router>
+                                    <span>Steps</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/display/cell" p-router>
+                                    <span>Cell</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="footer">
+            <div class="contents">
+                <p>Power by @<a href="https://github.com/cnuggets" target="_blank">cnuggets</a>, code licensed <a href="https://github.com/cnuggets/prac/blob/main/LICENSE" target="_blank">MIT</a></p>
+                <p>Thank you <a href="https://www.qianxiyun.com/" target="_blank">千喜云</a> for support.</p>
+                <p>Currently v1.3.2</p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Your page content -->
+        <div p-content>
+        </div>
+    </div>
+</body>
+
+</html>

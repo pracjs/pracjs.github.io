@@ -1,0 +1,70 @@
+<h3>Tab</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: tab config
+$.fn.tab(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "nav"
+], function (b, _, $) {
+
+    $("#tab").tab({
+        class: "primary"
+    });
+    
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>primary</td>
+                            <td>style class, default is 'primary'</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

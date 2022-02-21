@@ -1,0 +1,97 @@
+<h3>Toast</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// content: toast content
+// options: toast config
+$.toast(content, options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    $.toast("This is a message of toaster");
+    
+    ...
+});
+                </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Toast</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+$.toast("This is a message of toaster", {
+    class: "danger",
+    timeout: 3000,
+    onComplete: function() {
+        console.log("hide toast");
+    }
+});</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>primary</td>
+                            <td>toast style class, default is 'primary'</td>
+                        </tr>
+                        <tr>
+                            <td>timeout</td>
+                            <td>2000</td>
+                            <td>toast timeout milliseconds, default is 2000</td>
+                        </tr>
+                        <tr>
+                            <td>onComplete</td>
+                            <td>function () { }</td>
+                            <td>callback on toast timeout</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

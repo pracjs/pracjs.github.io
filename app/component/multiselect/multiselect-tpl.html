@@ -1,0 +1,241 @@
+<h3>Multi Select</h3>
+<div>Not only a multiple options selector, but also a multi function selector.</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: multiselect config
+$.fn.multiselect(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <label class="form-label">Multi Select</label>
+                            <select class="form-select" name="multi" multiple>
+                                <option value="1">One</option>
+                                <option value="2" selected>Two</option>
+                                <option value="3">Three</option>
+                                <option value="4" selected>Four</option>
+                                <option value="5" selected>Five</option>
+                                <option value="6">Six</option>
+                                <option value="7">Seven</option>
+                                <option value="8">Eight</option>
+                                <option value="9">Nine</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "component"
+], function (b, _, $) {
+
+    function _init(args) {
+        $("select[name='multi']").multiselect();
+    }
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Filter Search</h4>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <label class="form-label">Multi Select</label>
+                            <select class="form-select" name="multi-search" multiple>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                <option value="4">Four</option>
+                                <option value="5">Five</option>
+                                <option value="6">Six</option>
+                                <option value="7">Seven</option>
+                                <option value="8">Eight</option>
+                                <option value="9">Nine</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-search-js">
+$("select[name='multi-search']").multiselect({
+    search: true
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-search-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Async Search</h4>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <label class="form-label">Please input 1 ~ 10 English keyword to search</label>
+                            <select class="form-select" name="multi-async" multiple>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-async-js">
+$("select[name='multi-async']").multiselect({
+    search: {
+        async: function (keyword, callback) {
+            // Just a demo
+            if (!keyword) {
+                callback([]);
+                return;
+            }
+
+            var data = [{
+                value: "1",
+                text: "One"
+            }, {
+                value: "2",
+                text: "Two"
+            }, {
+                value: "3",
+                text: "Three"
+            }, {
+                value: "4",
+                text: "Four"
+            }, {
+                value: "5",
+                text: "Five"
+            }, {
+                value: "6",
+                text: "Six"
+            }, {
+                value: "7",
+                text: "Seven"
+            }, {
+                value: "8",
+                text: "Eight"
+            }, {
+                value: "9",
+                text: "Nine"
+            }, {
+                value: "10",
+                text: "Ten"
+            }];
+            var r = data.filter(function (i) {
+                if (i.text.match(new RegExp(keyword, "i"))) {
+                    return true;
+                }
+            });
+            setTimeout(function () {
+                callback(r);
+            }, 800);
+        }
+    }
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-async-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Validation</h4>
+                <div>Support form validation</div>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <form class="row g-3 needs-validation" onsubmit="return false;" id="form">
+                                <div class="col-md-12">
+                                    <label class="form-label">Multi Select</label>
+                                    <select class="form-select" name="multi-validation" multiple required>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">Four</option>
+                                        <option value="5">Five</option>
+                                        <option value="6">Six</option>
+                                        <option value="7">Seven</option>
+                                        <option value="8">Eight</option>
+                                        <option value="9">Nine</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select something
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-validation-js">
+$("#form").form({
+    cancel: {
+        disabled: true        
+    }
+});
+$("select[name='multi-validation']").multiselect();</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-validation-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table mt-3">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="50%" />
+                        <col width="35%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>search</td>
+                            <td>false / true<br/>{ "async": function (keyword, callback) { } }</td>
+                            <td>Set if support filter or search, default is none</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,192 @@
+<h3>Quick Start</h3>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Initialize Your Project</h4>
+                <textarea id="code-init">
+# create project
+mkdir project-directory
+cd project-directory/
+npm init
+# install prac
+npm install prac --save-dev
+npm install prac -g
+# initialize
+prac init</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Project Structure</h4>
+                <div class="mt-2 mb-2">After initialize your project will be like this</div>
+                <div class="structure">
+                    <ul>
+                        <li>
+                            <span>project-directory/</span>
+                            <ul>
+                                <li>
+                                    <span>app/</span>
+                                    <ul>
+                                        <li>
+                                            <span>home/</span>
+                                            <ul>
+                                                <li>home-tpl.html</li>
+                                                <li>home.js</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>js/</span>
+                                    <ul>
+                                        <li>
+                                            <span>lib/</span>
+                                            <ul>
+                                                <li>bootstrap.js</li>
+                                                <li>jquery.js</li>
+                                                <li>jquery.prac.com.datepicker.js</li>
+                                                <li>jquery.prac.com.uploader.js</li>
+                                                <li>jquery.prac.common.js</li>
+                                                <li>jquery.prac.component.js</li>
+                                                <li>moment.js</li>
+                                                <li>require.js</li>
+                                                <li>router.js</li>
+                                                <li>text.js</li>
+                                                <li>underscore.js</li>
+                                            </ul>
+                                        </li>
+                                        <li>prac.js</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>style/</span>
+                                    <ul>
+                                        <li>
+                                            <span>css/</span>
+                                            <ul>
+                                                <li>bootstrap.css</li>
+                                                <li>prac.css</li>
+                                            </ul>
+                                        </li>
+                                        <li>icons/</li>
+                                    </ul>
+                                </li>
+                                <li>index.html</li>
+                                <li>main.js</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-3">
+                    <h5>index.html</h5>
+                    <div>Website entry</div>
+                    <div id="code-index"></div>
+                </div>
+                <div class="mt-3">
+                    <h5>main.js</h5>
+                    <div>You can configure dependencies, routers and interceptors here</div>
+                    <textarea id="code-main">prac.config({
+    paths: {
+        // Add your library dependencies here
+        // For example
+        // "somelib": "somelib" // Put the js file somelib.js to js/lib directory first
+    },
+    shim: {
+    },
+    routes: {
+        // Add your routers here
+        // For example
+        home: { path: "/", moduleId: "app/home/home" }
+    },
+    interceptor: { // Add your interceptors here
+        page: {
+            // Before page render
+            before: [function (name, uri, args, $, next) {
+                next();
+            }, function (name, uri, args, $, next) {
+                next();
+            }],
+            // After page render
+            after: [function (name, uri, args, $, next) {
+                next();
+            }],
+            // On error
+            error: [function(e, $) {
+            }]
+        },
+        request: {
+            // On request complete
+            complete: [function (xhr, status, $, next) {
+                next();
+            }]
+        }
+    }
+});</textarea>
+                </div>
+                <div class="mt-3">
+                    <h5>app/</h5>
+                    <div class="mb-4">Put your modules under app/ directory. In general, it is used together with *.js and *-tpl.html</div>
+                    <h6>mymodule.js</h6>
+                    <textarea id="code-module-js">define(["text!app/mymodule/mymodule-tpl.html", "underscore", "jquery", "component"], function (tpl, _, $) {
+
+    function _init() {
+        // Your module code
+    }
+
+    return {
+        name: "mymodule", // Your module name
+        init: function (args) {
+            _init();
+        },
+        render: function (ctx, args, onload) {
+            // Render your page
+            ctx.html(_.template(tpl)({
+                title: "MyModule" // Page template data
+            }));
+            onload(args);
+        }
+    }
+});</textarea>
+                    <h6 class="mt-2">mymodule-tpl.html</h6>
+                    <div id="code-module-html"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Run your website</h4>
+                <div class="mt-2 mb-2">Start your website for development / debug</div>
+                <textarea id="code-start-dev">
+# Start
+prac run
+# Access URL
+http://localhost:8080</textarea>
+                <div class="mt-3 mb-2">Publish your website to Nginx</div>
+                <h6 class="mt-2">nginx.conf</h6>
+                <textarea id="code-nginx">http {
+    server {
+        listen       80;
+        server_name  YOUR_DOMAIN OR IP;
+        root         /path/project-directory;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }
+}</textarea>
+            </div>
+        </div>
+    </div>
+</div>

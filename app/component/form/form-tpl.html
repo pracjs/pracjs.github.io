@@ -1,0 +1,259 @@
+<h3>Form</h3>
+<div>About form basic usage, please refer to <a href="https://getbootstrap.com/docs/5.0/forms/overview/" target="_blank">Bootstrap Form</a>.</div>
+<div>Here, we provide a Form extensions, for example: add Submit button for form, add various validations for form.</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: form config
+$.fn.form(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Usage</h4>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <form class="row g-3 needs-validation" onsubmit="return false;" id="form">
+                                <div class="col-md-6">
+                                    <label for="validationCustom01" class="form-label">First name</label>
+                                    <input type="text" class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Please provide your first name.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom02" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Please provide your last name.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom03" class="form-label">City</label>
+                                    <input type="text" class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a city.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom05" class="form-label">Zip</label>
+                                    <input type="text" class="form-control" pattern="^[0-9]+$">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid zip.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom03" class="form-label">Hobby</label>
+                                    <select class="form-select" required>
+                                        <option value="">Please select</option>
+                                        <option value="1">Basketball</option>
+                                        <option value="2">Travel</option>
+                                        <option value="3">Movie</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select your hobby.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom03" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" required p-integer min="1" max="99999">
+                                    <div class="invalid-feedback">
+                                        Please provide a phone number.
+                                    </div>
+                                </div>
+                                <div class="col-12 position-relative">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                        <label class="form-check-label" for="invalidCheck">
+                                            Agree to terms and conditions
+                                        </label>
+                                        <div class="invalid-tooltip">
+                                            You must agree before submitting.
+                                        </div>
+                                    </div>
+                                </div>   
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "component",
+], function (b, _, $) {
+
+    function _init() {
+        $("#form").form({
+            confirm: {
+                label: "Save",
+                class: "danger",
+                onConfirm: function (notice) {
+                    // async notice
+                    setTimeout(function () {
+                        notice();
+                    }, 1500);
+                }
+            },
+            cancel: {
+                label: "Clear",
+                onCancel: function () {
+                    $("#form").find("input[type='text']").val("");
+                    $("#form").find("select option[value='']").prop("selected", true);
+                    $("#form").find("input[type='checkbox']").prop("checked", false);
+                }
+            }
+        });
+    }
+
+    ...
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Validation</h4>
+                <div>Completely compatible to <a href="https://getbootstrap.com/docs/5.0/forms/validation/" target="_blank">Bootstrap Validation</a>. We provide some extentions for validation</div>
+                <h5 class="mt-4">Pattern Validation</h5>
+                <div>You can config a Regular Expression for a 'input' by set 'pattern' attribute</div>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-pattern"></div>
+
+                <h5 class="mt-4">Limit the input value and scope</h5>
+                <div>Provide 'p-integer' and 'p-decimal' attribute for 'input' to limit the user input value, and also provide 'min', 'max' to limit the input scope.</div>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <div>
+                                <label class="form-label">Integer Scope 1 ~ 99999:</label>
+                                <input type="text" class="form-control" p-integer min="1" max="99999" style="width: 180px;">
+                            </div>
+                            <div>
+                                <label class="form-label">Decimal Scope 1 ~ 100:</label>
+                                <input type="text" class="form-control" p-decimal min="1" max="100" style="width: 180px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-limit"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Form Options</h4>
+                <h5 class="mt-4">options</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>footer</td>
+                            <td>{"fixed": false}</td>
+                            <td>If fix the footer of form in page bottom, defaut is false</td>
+                        </tr>
+                        <tr>
+                            <td>confirm</td>
+                            <td>JSON</td>
+                            <td>For detail see below</td>
+                        </tr>
+                        <tr>
+                            <td>cancel</td>
+                            <td>JSON</td>
+                            <td>For detail see below</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="mt-4">confirm</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>primary</td>
+                            <td>Button css class, default is 'primary'.<br/>For detail please refer to <a href="https://getbootstrap.com/docs/5.0/components/buttons/" target="_blank">Buttons</a></td>
+                        </tr>
+                        <tr>
+                            <td>label</td>
+                            <td>Submit</td>
+                            <td>Button label, defaullt is 'Submit'</td>
+                        </tr>
+                        <tr>
+                            <td>waiting</td>
+                            <td>Waiting</td>
+                            <td>Waiting text on click confirm button, default is 'Waiting'</td>
+                        </tr>
+                        <tr>
+                            <td>onConfirm</td>
+                            <td>function (notice) { notice(); }</td>
+                            <td>fired on click confirm button</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="mt-4">cancel</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>secondary</td>
+                            <td>Button css class, default is 'secondary'.<br/>For detail please refer to <a href="https://getbootstrap.com/docs/5.0/components/buttons/" target="_blank">Buttons</a></td>
+                        </tr>
+                        <tr>
+                            <td>label</td>
+                            <td>Cancel</td>
+                            <td>Button label, defaullt is 'Cancel'</td>
+                        </tr>
+                        <tr>
+                            <td>onCancel</td>
+                            <td>function () { }</td>
+                            <td>fired on click cancel button</td>
+                        </tr>
+                        <tr>
+                            <td>disabled</td>
+                            <td>false</td>
+                            <td>Disable cancel button, default is false</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

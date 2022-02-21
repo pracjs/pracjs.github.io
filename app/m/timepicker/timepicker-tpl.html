@@ -1,0 +1,161 @@
+<h3>Time Picker</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: timepicker config
+$.fn.timePicker(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form"
+], function (b, _, $) {
+    var cc = $("#timepicker-bottom");
+    $("#time").timePicker({
+        confirm: {
+            onConfirm: function (values) {
+                $("input[name='time']").val(values.join(":")).change();
+                cc.offcanvas("toggle");
+            }
+        },
+        cancel: {
+            onCancel: function () {
+                cc.offcanvas("toggle");
+            }
+        }
+    }
+    );
+    $("input[name='time']").on("click", function () {
+        cc.offcanvas("toggle");
+    });
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Date Picker</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+$("#minute").timePicker({
+    title: "选择时分",
+    type: "hm",
+    hour: {
+        scope: [8, 20],
+        formatter: function (hour) {
+            return hour;
+        }
+    },
+    minute: {
+        formatter: function (minute) {
+            return minute;
+        }
+    },
+    confirm: {
+        label: "确认",
+        onConfirm: function (values) {
+            $("input[name='minute']").val(values.join(":")).change();
+            cc1.offcanvas("toggle");
+        }
+    },
+    cancel: {
+        label: "取消",
+        onCancel: function () {
+            cc1.offcanvas("toggle");
+        }
+    }
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <div>Time Picker is extended from Picker, so Picker's basic opitons is working for Time Picker</div>
+                <table class="table mt-4">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>hms, hm, ms</td>
+                            <td>type of time picker, default is 'hms'</td>
+                        </tr>
+                        <tr>
+                            <td>hour</td>
+                            <td>
+                                <textarea id="code-hour">{
+    scope: [0, 23], 
+    formatter: function (hour) { 
+        return hour; 
+    }
+}</textarea>
+                            </td>
+                            <td>hour config;<br/>default scope 0 ~ 23</td>
+                        </tr>
+                        <tr>
+                            <td>minute</td>
+                            <td>
+                                <textarea id="code-minute">{ 
+    formatter: function (minute) { 
+        return minute; 
+    } 
+}</textarea>
+                            </td>
+                            <td>minute config</td>
+                        </tr>
+                        <tr>
+                            <td>second</td>
+                            <td>
+                                <textarea id="code-second">{ 
+    formatter: function (second) { 
+        return second; 
+    } 
+}</textarea>
+                            </td>
+                            <td>second config</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

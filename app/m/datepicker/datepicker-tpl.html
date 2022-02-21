@@ -1,0 +1,161 @@
+<h3>Date Picker</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: datepicker config
+$.fn.datePicker(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form"
+], function (b, _, $) {
+    var cc = $("#datepicker-bottom");
+    $("#date").datePicker({
+            confirm: {
+                onConfirm: function (values) {
+                    $("input[name='date']").val(values.join("-")).change();
+                    cc.offcanvas("toggle");
+                }
+            },
+            cancel: {
+                onCancel: function () {
+                    cc.offcanvas("toggle");
+                }
+            }
+        }
+    );
+    $("input[name='date']").on("click", function () {
+        cc.offcanvas("toggle");
+    });
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Date Picker</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+$("#month").datePicker({
+    title: "选择年月",
+    type: "ym",
+    year: {
+        scope: [2000, 2025],
+        formatter: function (year) {
+            return year + "年";
+        }
+    },
+    month: {
+        formatter: function (month) {
+            return month + "月";
+        }
+    },
+    confirm: {
+        label: "确认",
+        onConfirm: function (values) {
+            $("input[name='month']").val(values.join("-")).change();
+            cc1.offcanvas("toggle");
+        }
+    },
+    cancel: {
+        label: "取消",
+        onCancel: function () {
+            cc1.offcanvas("toggle");
+        }
+    }
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <div>Date Picker is extended from Picker, so Picker's basic opitons is working for Date Picker</div>
+                <table class="table mt-4">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>ymd, ym, md</td>
+                            <td>type of date picker, default is 'ymd'</td>
+                        </tr>
+                        <tr>
+                            <td>year</td>
+                            <td>
+                                <textarea id="code-year">{
+    scope: [2022, 2025], 
+    formatter: function (year) { 
+        return year; 
+    }
+}</textarea>
+                            </td>
+                            <td>year config;<br/>default scope is from current year to four years later</td>
+                        </tr>
+                        <tr>
+                            <td>month</td>
+                            <td>
+                                <textarea id="code-month">{ 
+    formatter: function (month) { 
+        return month; 
+    } 
+}</textarea>
+                            </td>
+                            <td>month config</td>
+                        </tr>
+                        <tr>
+                            <td>date</td>
+                            <td>
+                                <textarea id="code-date">{ 
+    formatter: function (date) { 
+        return date; 
+    } 
+}</textarea>
+                            </td>
+                            <td>date config</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

@@ -1,0 +1,133 @@
+<h3>Slider</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: slider config
+$.fn.slider(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form"
+], function (b, _, $) {
+
+    $("#slider").slider();
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Slider</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+// Customize the button
+var btn = $("<div style='width:40px;height:25px;background-color:#198754;border-radius:2px;color:#fff;text-align:center;user-select:none;'>20</div>");
+
+// Init the slider
+$("#slider-options").slider({
+    height: 5,                                       // progress bar height
+    classes: ["progress-bar-striped", "bg-success"], // progress bar style
+    min: 0,                                          // min value
+    max: 100,                                        // max value
+    default: 20,                                     // default value
+    step: 5,                                         // step of slide
+    btn: btn,                                        // slider button
+    onChange: function (value) {                     // callback on slide
+        btn.text(value);
+    }
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table mt-3">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="20%" />
+                        <col width="65%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>height</td>
+                            <td>3</td>
+                            <td>Progress bar height, default is 3</td>
+                        </tr>
+                        <tr>
+                            <td>classes</td>
+                            <td>[]</td>
+                            <td>Progress bar style class, default is []</td>
+                        </tr>
+                        <tr>
+                            <td>min</td>
+                            <td>0</td>
+                            <td>Minimum value, defalut is 0</td>
+                        </tr>
+                        <tr>
+                            <td>max</td>
+                            <td>100</td>
+                            <td>Maximum value, default is 100</td>
+                        </tr>
+                        <tr>
+                            <td>defalut</td>
+                            <td>0</td>
+                            <td>Default value, default is 0</td>
+                        </tr>
+                        <tr>
+                            <td>step</td>
+                            <td>1</td>
+                            <td>Slide step, default is 1</td>
+                        </tr>
+                        <tr>
+                            <td>onChange</td>
+                            <td>function (value) { }</td>
+                            <td>fire on slide the slider bar</td>
+                        </tr>
+                        <tr>
+                            <td>btn</td>
+                            <td></td>
+                            <td>Customize the slider bar button, default is none</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

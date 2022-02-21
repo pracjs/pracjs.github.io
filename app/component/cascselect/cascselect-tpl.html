@@ -1,0 +1,246 @@
+<h3>Cascade Select</h3>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: cascade select config
+$.cascadeSelect(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <form class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label">Province</label>
+                                    <select class="form-select" name="province" required id="province"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">City</label>
+                                    <select class="form-select" name="city" required id="city"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">District</label>
+                                    <select class="form-select" name="district" required id="district"></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "component"
+], function (b, _, $) {
+
+    function _init(args) {
+        $.cascadeSelect([{
+            selector: $("#province"), // selector element
+            data: { 1: "Liaoning", 2: "Jilin" }, // data
+            selected: 1 // default selected value
+        }, {
+            selector: $("#city"),
+            data: {
+                1: {
+                    11: "Shenyang",
+                    12: "Dalian",
+                    13: "Anshan",
+                },
+                2: {
+                    21: "Changchun",
+                    22: "Jilin",
+                }
+            },
+            selected: 12
+        }, {
+            selector: $("#district"),
+            data: {
+                11: {
+                    111: 'Heping',
+                    112: 'Shenhe',
+                    113: 'Dadong',
+                    114: 'Huanggu'
+                },
+                12: {
+                    121: 'Zhongshan',
+                    122: 'Xigang',
+                    123: 'Shahekou',
+                    124: 'Ganjingzi'
+                },
+                13: {
+                    131: 'Tiedong',
+                    132: 'Tiexi',
+                    133: 'Lishan'
+                },
+                21: {
+                    211: 'Nanguan',
+                    212: 'Kuancheng',
+                    213: 'Chaoyang'
+                },
+                22: {
+                    221: 'Changyi',
+                    222: 'Longtan',
+                    223: 'Chuanying'
+                }
+            },
+            selected: 122
+        }]);
+    }
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Async</h4>
+                <div>Async set selector data</div>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo-plain">
+                            <form class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label">Province</label>
+                                    <select class="form-select" name="province" required id="province-async"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">City</label>
+                                    <select class="form-select" name="city" required id="city-async"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">District</label>
+                                    <select class="form-select" name="district" required id="district-async"></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-async-js">
+$.cascadeSelect([{
+    selector: $("#province-async"),
+    async: function (value, callback) {
+        setTimeout(function () {
+            callback({ 1: "Liaoning", 2: "Jilin" }, 1);
+        }, 500);
+    }
+}, {
+    selector: $("#city-async"),
+    async: function (value, callback) {
+        var data =  {
+            1: {
+                11: "Shenyang",
+                12: "Dalian",
+                13: "Anshan",
+            },
+            2: {
+                21: "Changchun",
+                22: "Jilin",
+            }
+        };
+
+        setTimeout(function () {
+            callback(data[value], 12);
+        }, 500);
+    }
+}, {
+    selector: $("#district-async"),
+    async: function (value, callback) {
+        var data = {
+            11: {
+                111: 'Heping',
+                112: 'Shenhe',
+                113: 'Dadong',
+                114: 'Huanggu'
+            },
+            12: {
+                121: 'Zhongshan',
+                122: 'Xigang',
+                123: 'Shahekou',
+                124: 'Ganjingzi'
+            },
+            13: {
+                131: 'Tiedong',
+                132: 'Tiexi',
+                133: 'Lishan'
+            },
+            21: {
+                211: 'Nanguan',
+                212: 'Kuancheng',
+                213: 'Chaoyang'
+            },
+            22: {
+                221: 'Changyi',
+                222: 'Longtan',
+                223: 'Chuanying'
+            }
+        };
+
+        setTimeout(function () {
+            callback(data[value], 122);
+        }, 500);
+    }
+}]);</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-async-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <div>options should be a option array, array element is a JSON object</div>
+                <table class="table mt-3">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="40%" />
+                        <col width="45%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>selector</td>
+                            <td>$("#id")</td>
+                            <td>selector element</td>
+                        </tr>
+                        <tr>
+                            <td>data</td>
+                            <td>{ "value1": "text1", "value2": "text2" }</td>
+                            <td>selector options data</td>
+                        </tr>
+                        <tr>
+                            <td>selected</td>
+                            <td>value2</td>
+                            <td>default selected value</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

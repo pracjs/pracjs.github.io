@@ -1,0 +1,66 @@
+<h3>Interceptor</h3>
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Configuration</h4>
+                <div>You can config various interceptors to do some business processing.</div>
+                <ul>
+                    <li>before page rendered</li>
+                    <li>after page rendered</li>
+                    <li>on error happened while page rendering</li>
+                    <li>on ajax request complete</li>
+                </ul>
+                <textarea id="code-config">
+prac.config({
+    ...
+    interceptor: { // Add your interceptors here
+        page: {
+            // Before page render
+            before: [function (name, uri, args, $, next) {
+                // name: module name
+                // uri: router path
+                // args: router path variables
+                // $: jquery
+                // next: call next() will go to next interceptor
+
+                // Example: check user if login
+                if (name != "login") {
+                    $.ajax({
+                        url: "/user",
+                        success: function (profile, textStatus, xhr) {
+                            next(); // if login, go next
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            if (xhr.status == 401) { // if not login, route to login page
+                                route("/login");
+                            }
+                        }
+                    });
+                } else {
+                    next();
+                }
+            }, function (name, uri, args, $, next) {
+                next();
+            }],
+            // After page render
+            after: [function (name, uri, args, $, next) {
+                next();
+            }],
+            // On error
+            error: [function(e, $) {
+                
+            }]
+        },
+        request: {
+            // On request complete
+            complete: [function (xhr, status, $, next) {
+                next();
+            }]
+        }
+    }
+});</textarea>
+            </div>
+        </div>
+    </div>
+</div>

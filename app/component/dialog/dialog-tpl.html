@@ -1,0 +1,484 @@
+<h3>Dialog</h3>
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Alert Dialog</h4>
+                <h5 class="mt-4">Bind</h5>
+                <div>Bind to a element, will be fired on click it</div>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-alert-bind-definition">
+// message: alert message
+// options: alert dialog config
+$.fn.alert(message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-danger" id="alert1">Alert</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-alert-bind-js">$("#alert1").alert("Here is the alert message");</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-alert-bind-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Trigger Directly</h5>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-alert-trigger-definition">
+// message: alert message
+// options: alert dialog config
+$.alert(message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-danger" id="alert2">Alert</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-alert-trigger-js">
+$("#alert2").on("click", function() {
+    $.alert("Here is the alert message");
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-alert-trigger-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Auto bind by setting 'p-alert' attribute</h5>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-danger" p-alert="Here is the alert message">Alert</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-auto-bind-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Options</h5>
+                <div>You can customize the alert dialog by setting options</div>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-danger" id="alert3">Alert</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-alert-options-js">
+$("#alert3").alert("Here is the alert message", {
+    confirm: {
+        label: "OK", // Confirm button label
+        waiting: "Please wait", // Waiting text
+        onConfirm: function (notice) { // Called when click confirm button
+            // Async
+            setTimeout(function () {
+                notice();
+            }, 1000);
+        }
+    },
+    size: "lg" // Dialog size
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-alert-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Confirm Dialog</h4>
+                <h5 class="mt-4">Bind</h5>
+                <div>Bind to a element, will be fired on click it</div>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-confirm-bind-definition">
+// title: confirm dialog title
+// message: confirm message / body
+// options: confirm dialog config
+$.fn.confirm(title, message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-primary" id="confirm1">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-confirm-bind-js">$("#confirm1").confirm("Confirm Title", "Here is the confirm message");</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-confirm-bind-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Trigger Directly</h5>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-confirm-trigger-definition">
+// title: confirm dialog title
+// message: confirm message / body
+// options: confirm dialog config
+$.confirm(title, message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-primary" id="confirm2">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-confirm-trigger-js">
+$("#confirm2").on("click", function() {
+    $.confirm("Confirm Title", "Here is the confirm message");
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-confirm-trigger-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Options</h5>
+                <div>You can customize the confirm dialog by setting options</div>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-primary" id="confirm3">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-confirm-options-js">
+$("#confirm3").alert(
+    "Confirm Title", 
+    "Here is the confirm message", {
+    confirm: {
+        label: "OK", // Confirm button label
+        waiting: "Please wait", // Waiting text
+        onConfirm: function (notice) { // Called when click confirm button
+            // Async
+            setTimeout(function () {
+                notice();
+            }, 1000);
+        }
+    },
+    cancel: {
+        label: "Cancel",
+        onCancel: function () {
+            console.log("cancel");
+        }
+    }
+    size: "lg" // Dialog size
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-confirm-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Info Dialog</h4>
+                <h5 class="mt-4">Bind</h5>
+                <div>Bind to a element, will be fired on click it</div>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-info-bind-definition">
+// message: info message
+// options: info dialog config
+$.fn.info(message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-info" id="info1">Info</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-info-bind-js">$("#info1").info("Here is the message");</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-info-bind-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Trigger Directly</h5>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-info-trigger-definition">
+// message: info message
+// options: info dialog config
+$.info(message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-info" id="info2">Info</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-info-trigger-js">
+$("#info2").on("click", function() {
+    $.info("Here is the message");
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-info-trigger-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Auto bind by setting 'p-info' attribute</h5>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-info" p-info="Here is the message">Info</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-auto-info-bind-html"></div>
+                <hr/>
+
+                <h5 class="mt-4">Options</h5>
+                <div>You can customize the info dialog by setting options</div>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-info" id="info3">Info</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-info-options-js">
+$("#info3").info("Here is the message", {
+    size: "lg" // Dialog size
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-info-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Modal Dialog</h4>
+                <div>You can show page in a modal dialog</div>
+                <h6 class="mt-4">Function Definition</h6>
+                <textarea id="code-modal-definition">
+// title: dialog title
+// message: dialog message / body
+// options: info dialog config
+$.fn.dialog(title, message, options)
+
+// title: dialog title
+// message: dialog message / body
+// options: info dialog config
+$.dialog(title, message, options)</textarea>
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <div class="demo">
+                            <button type="button" class="btn btn-primary" id="modal">Modal</button>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-modal-js">
+$("#dialog").dialog("This is title", $(_.template($("#form-tpl").html())()), {
+    confirm: {
+        label: "Save",
+        waiting: "Please wait",
+        onConfirm: function (notice) {
+            setTimeout(function () {
+                notice();
+            }, 1000);
+        }
+    },
+    cancel: {
+        label: "Cancel",
+        onCancel: function () {
+            console.log("cancel");
+        }
+    },
+    size: "lg"
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-modal-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Dialog Options</h4>
+                <h5 class="mt-4">options</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>close</td>
+                            <td>true / false</td>
+                            <td>If show close button, default is true<br/>but for Alert Dialog cannot be set and can only be false</td>
+                        </tr>
+                        <tr>
+                            <td>footer</td>
+                            <td>true / false</td>
+                            <td>If show footer, default is true<br/>but for info Info Dialog cannot be set and can only be false</td>
+                        </tr>
+                        <tr>
+                            <td>size</td>
+                            <td>sm, lg, xl</td>
+                            <td>Modal dialog size, defaut is none. For detail please see <a href="https://getbootstrap.com/docs/5.0/components/modal/#optional-sizes" target="_blank">Bootstrap Modal</a>.</td>
+                        </tr>
+                        <tr>
+                            <td>css</td>
+                            <td>{"min-width": "1000px"}</td>
+                            <td>Set the inline style for modal dialog</td>
+                        </tr>
+                        <tr>
+                            <td>confirm</td>
+                            <td>JSON</td>
+                            <td>Detail see below</td>
+                        </tr>
+                        <tr>
+                            <td>cancel</td>
+                            <td>JSON</td>
+                            <td>Not available for Alert Dialog. Detail see below</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="mt-4">confirm</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>primary</td>
+                            <td>Button css class, default is 'primary'.<br/>but for Alert Dialog default is 'danger'. <br/>For detail please refer to <a href="https://getbootstrap.com/docs/5.0/components/buttons/" target="_blank">Buttons</a></td>
+                        </tr>
+                        <tr>
+                            <td>label</td>
+                            <td>Confirm</td>
+                            <td>Button label, defaullt is 'Confirm'</td>
+                        </tr>
+                        <tr>
+                            <td>waiting</td>
+                            <td>Waiting</td>
+                            <td>Waiting text on click confirm button, default is 'Waiting'</td>
+                        </tr>
+                        <tr>
+                            <td>onConfirm</td>
+                            <td>function (notice) { notice(); }</td>
+                            <td>fired on click confirm button</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="mt-4">cancel</h5>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>secondary</td>
+                            <td>Button css class, default is 'secondary'.<br/>For detail please refer to <a href="https://getbootstrap.com/docs/5.0/components/buttons/" target="_blank">Buttons</a></td>
+                        </tr>
+                        <tr>
+                            <td>label</td>
+                            <td>Cancel</td>
+                            <td>Button label, defaullt is 'Cancel'</td>
+                        </tr>
+                        <tr>
+                            <td>onCancel</td>
+                            <td>function () { }</td>
+                            <td>fired on click cancel button</td>
+                        </tr>
+                        <tr>
+                            <td>disabled</td>
+                            <td>false</td>
+                            <td>Disable cancel button, default is false.<br/> For Alert Dialog cannot be set and can only be true</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="form-tpl">
+    <form class="row g-3 needs-validation" novalidate onsubmit="return false;">
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">First name</label>
+            <input type="text" class="form-control" id="validationCustom01" required>
+            <div class="invalid-feedback">
+                not good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="validationCustom02" required>
+            <div class="invalid-feedback">
+                not good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
+                    required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">City</label>
+            <input type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="validationCustom05" pattern="^[0-9]+$">
+            <div class="invalid-feedback">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <select class="form-select" aria-label="Default select example" required>
+                <option value="">Please select</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-12 position-relative">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-tooltip">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>   
+    </form>
+</script>

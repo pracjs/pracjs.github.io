@@ -1,0 +1,65 @@
+<h3>Router</h3>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Configuration</h4>
+                <div>You can configure your routers in main.js</div>
+                <textarea id="code-config">prac.config({
+    ...
+    routes: {
+        // Add your routers here
+        // For example
+        home: { path: "/", moduleId: "app/home/home" }
+    },
+    ...
+});</textarea>
+                <div class="mt-3">Router rules instruction</div>
+                <div>
+                    <img src="/res/router-rules.jpg" width="600px" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Usage</h4>
+                <div>Bind to &lt;a&gt; link by add 'p' attribute: p-router</div>
+                <div id="code-route-a"></div>
+                <div class="mt-3">Trigger by JS</div>
+                <textarea id="code-route-js">route("/router")</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Variables passing by path</h4>
+                <div>You can pass variables to module by setting the router path</div>
+                <textarea id="code-path-var">router: { path: "/router/:keyword/:limit/:offset", moduleId: "app/router/router" }</textarea>
+                <div class="mt-3">Request Demo</div>
+                <textarea id="code-var-pass">route("/router/test/20/0")</textarea>
+                <div class="mt-3">Get variables in module</div>
+                <textarea id="code-module-args">
+return {
+    name: "mymodule",
+    init: function () {},
+    render: function (ctx, args, onload) {
+        // Read variables from args like this
+        var keyword = args.keyword;
+        var limit = args.limit;
+        var offset = args.offset;
+    }
+}</textarea>
+            </div>
+        </div>
+    </div>
+</div>

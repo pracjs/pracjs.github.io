@@ -1,0 +1,70 @@
+<h3>Module</h3>
+<div>
+    Generally, we will create a pair of files for a module, JS and html template.
+</div>
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Javascript</h4>
+                <div class="mt-3">
+                    In JS we will place our logical code, request biz data via AJAX, bind element event ...
+                </div>
+                <textarea id="code-module">define([
+    "text!app/module/module-tpl.html", // template
+    "underscore",                      // require js lib / module
+    "jquery", "component"              // require js lib / module
+], function (tpl, _, $) {
+
+    function _init(args) {
+        // bind some events
+        $("#id").on("click", function () {
+            ...
+        });
+    }
+
+    return {
+        name: "module",
+        init: _init, // after onload will be called
+        render: function (ctx, args, onload) { 
+            // ctx: page rendering context, 
+            // args: variables passing via router path
+            // onload: Mostly we will load data asynchronously, we can use onload to notify that page is loaded and init function could be called
+
+            // Request data
+            $.ajax({
+                url: "/load/data",
+                success: function (data, textStatus, xhr) {
+                    // set data & render html
+                    var html = _.template(tpl)({
+                        records: data
+                    })
+
+                    // show page
+                    ctx.html(html);
+
+                    // notify that page is loaded, init function will be called
+                    onload(args);
+                }
+            });
+        }
+    }
+});</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Html Template</h4>
+                <div class="mt-3">
+                    In html template, render the page based on the data passed by JS. For the detail usage of template language, please refer to <a href="https://underscorejs.org/#template" target="_blank">underscore template</a>
+                </div>
+                <div id="code-tpl"></div>
+            </div>
+        </div>
+    </div>
+</div>

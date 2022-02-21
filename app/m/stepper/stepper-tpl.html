@@ -1,0 +1,115 @@
+<h3>Stepper</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: stepper config
+$.fn.stepper(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form"
+], function (b, _, $) {
+
+    $("#stepper").stepper();
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Stepper</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+$("#stepper-options").stepper({
+    class: "outline-secondary", // button class
+    default: 2.2,               // defaut value
+    min: 2,                     // min value
+    max: 10,                    // max value
+    step: 2,                    // step
+    decimal: 1                  // decimal size
+});</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table mt-3">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="20%" />
+                        <col width="65%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>class</td>
+                            <td>primary</td>
+                            <td>Button class, defautl is 'primary'</td>
+                        </tr>
+                        <tr>
+                            <td>min</td>
+                            <td>0</td>
+                            <td>Minimum value, defalut is none, no limit</td>
+                        </tr>
+                        <tr>
+                            <td>max</td>
+                            <td>100</td>
+                            <td>Maximum value, default is none, no limit</td>
+                        </tr>
+                        <tr>
+                            <td>defalut</td>
+                            <td>0</td>
+                            <td>Default value, default is 0</td>
+                        </tr>
+                        <tr>
+                            <td>step</td>
+                            <td>1</td>
+                            <td>Step, integer, default is 1. If decimal > 0, moving step will be step / (10 ^ decimal)</td>
+                        </tr>
+                        <tr>
+                            <td>decimal</td>
+                            <td>0</td>
+                            <td>Decimal size, integer, default is 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

@@ -1,0 +1,168 @@
+<h3>Form & Validation</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: form config
+$.fn.form(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Auto Bind</h4>
+                <ul>
+                    <li>p-form: form</li>
+                    <li>p-submit: submit button of form</li>
+                    <li>p-cancel: cancel button of form</li>
+                </ul>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html-autobind"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    $(".p-form").form({
+        // Customer validations
+        validations: {
+            username: function (elem, callback) {
+                setTimeout(function () {
+                    // async validate username
+                    if (elem.val() == "test") {
+                        callback(false, "Username already exsits");
+                    } else {
+                        callback(true);
+                    }
+                }, 1500);
+            },
+            vcode: function (elem, callback) {
+                setTimeout(function () {
+                    // async validate vcode
+                    if (elem.val() == "1234") {
+                        callback(true);
+                    } else {
+                        callback(false);
+                    }
+                }, 1500);
+            }
+        },
+        submit: {
+            onSubmit: function () {
+                var loading = $(".p-form").loading({
+                    overlay: {
+                        disabled: true
+                    },
+                    spinner: {
+                        class: "secondary"
+                    }
+                });
+                setTimeout(function () {
+                    loading.stop();
+                }, 1500);
+            }
+        },
+        cancel: {
+            btn: $("#cancel"),
+            onCancel: function () {
+                console.log("reset");
+            }
+        }
+    });
+
+    var waiting = false;
+    $("#send").on("click", function () {
+        if (waiting) {
+            return;
+        }
+        if ($("input[name='mobile']").val().length == 0) {
+            $.toast("Please input your mobile first", {
+                class: "danger"
+            });
+            return;
+        }
+        waiting = true;
+        $("#send").addClass("disabled");
+        var countdown = 60;
+        $("#send").text("Wait " + countdown + "s");
+        var timer = setInterval(function () {
+            if (countdown <= 1) {
+                waiting = false;
+                $("#send").removeClass("disabled");
+                $("#send").text("Send");
+                clearInterval(timer);
+                return;
+            }
+            $("#send").text("Wait " + (--countdown) + "s");
+        }, 1000);
+    });
+
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="50%" />
+                        <col width="35%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>validations</td>
+                            <td>{}</td>
+                            <td>Customer defined validations</td>
+                        </tr>
+                        <tr>
+                            <td>submit</td>
+                            <td>{"btn": null, "onSubmit": function () { }}</td>
+                            <td>config for submit button</td>
+                        </tr>
+                        <tr>
+                            <td>cancel</td>
+                            <td>{"btn": null, "onCancel": function () { }}</td>
+                            <td>config for cancel button</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>

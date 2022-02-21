@@ -1,0 +1,117 @@
+<h3>Slides</h3>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Function Definition</h4>
+                <textarea id="code-definition">
+// options: slides config
+$.fn.slides(options)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Basic Usage</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-js">
+define([
+    "bootstrap",
+    "underscore",
+    "jquery", 
+    "form",
+    "action"
+], function (b, _, $) {
+
+    $("#slides").slides();
+    
+    ...
+});
+                </textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Config Slides</h4>
+                <h6 class="mt-4">JS</h6>
+                <textarea id="code-options-js">
+var slides = $("#slides-options").slides({
+    autoplay: false,
+    indicator: false,
+    onSwipe: function () {
+        console.log("on swipe");
+    },
+    onStopSwipe: function () {
+        console.log("stop swipe");
+    },
+    onChange: function (index) {
+        $("#index").text(index + 1);
+    }
+});
+slides.select(2);</textarea>
+                <h6 class="mt-4">HTML</h6>
+                <div id="code-options-html"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Options</h4>
+                <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="30%" />
+                        <col width="55%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>autoplay</td>
+                            <td>false / true</td>
+                            <td>if auto play the slides, default is true</td>
+                        </tr>
+                        <tr>
+                            <td>indicator</td>
+                            <td>false / true</td>
+                            <td>if show the indicator of slides, default is true</td>
+                        </tr>
+                        <tr>
+                            <td>onSwipe</td>
+                            <td>function () { }</td>
+                            <td>callback on swipe the slide</td>
+                        </tr>
+                        <tr>
+                            <td>onStopSwipe</td>
+                            <td>function () { }</td>
+                            <td>callback on stop swipe the slide</td>
+                        </tr>
+                        <tr>
+                            <td>onChange</td>
+                            <td>function (index) { }</td>
+                            <td>callback on change the slide</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="embed">
+
+</div>
